@@ -79,6 +79,12 @@ button {
     z-index: 9999;
 }
 
+transition:
+    opacity 0.7s ease,
+    visibility 0.7s ease;
+
+will-change: opacity;
+
 #loader h1 {
     font-family: var(--font-display);
     font-size: clamp(3rem, 8vw, 7rem);
