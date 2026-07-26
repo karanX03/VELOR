@@ -227,7 +227,7 @@ will-change: opacity;
             rgba(0, 0, 0, 0.82),
             rgba(0, 0, 0, 0.42)
         ),
-        url("../assets/images/hero.jpg");
+        url("../assets/images/hero.png");
 
     background-size: cover;
     background-position: center;
