@@ -77,19 +77,18 @@ button {
     color: var(--ivory);
 
     z-index: 9999;
+
+    transition:
+        opacity 0.7s ease,
+        visibility 0.7s ease;
+
+    will-change: opacity;
 }
-
-transition:
-    opacity 0.7s ease,
-    visibility 0.7s ease;
-
-will-change: opacity;
 
 #loader h1 {
     font-family: var(--font-display);
     font-size: clamp(3rem, 8vw, 7rem);
     font-weight: 500;
-
     letter-spacing: 0.18em;
 }
 
@@ -128,12 +127,9 @@ will-change: opacity;
 
 .logo {
     font-family: var(--font-display);
-
     font-size: 2rem;
     font-weight: 600;
-
     letter-spacing: 0.18em;
-
     white-space: nowrap;
 }
 
@@ -348,10 +344,231 @@ will-change: opacity;
 
 
 /* =========================================
-   EMPTY SECTIONS — TEMPORARY
+   FEATURED COLLECTION
 ========================================= */
 
-.featured,
+.featured {
+    width: 100%;
+    padding: 110px 4% 120px;
+
+    background: var(--ivory);
+    color: var(--black);
+}
+
+.featured-header {
+    max-width: 900px;
+    margin: 0 auto 60px;
+
+    text-align: center;
+}
+
+.section-label {
+    margin-bottom: 18px;
+
+    color: var(--gold);
+
+    font-size: 0.72rem;
+    font-weight: 500;
+
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+}
+
+.featured-header h2 {
+    margin-bottom: 20px;
+
+    font-family: var(--font-display);
+
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 500;
+
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+}
+
+.section-description {
+    max-width: 600px;
+    margin: 0 auto;
+
+    color: #77736e;
+
+    font-size: 0.9rem;
+    font-weight: 300;
+
+    line-height: 1.8;
+}
+
+
+/* Product Grid */
+
+.product-grid {
+    width: min(100%, var(--container));
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 28px;
+}
+
+
+/* Product Card */
+
+.product-card {
+    overflow: hidden;
+
+    background: var(--white);
+
+    border: 1px solid rgba(17, 17, 17, 0.08);
+
+    transition:
+        transform 0.45s ease,
+        box-shadow 0.45s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.10);
+}
+
+
+/* Product Image */
+
+.product-image {
+    aspect-ratio: 4 / 5;
+
+    overflow: hidden;
+
+    background: #e8e4de;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.7s cubic-bezier(.2, .7, .2, 1);
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.045);
+}
+
+
+/* Product Information */
+
+.product-info {
+    padding: 26px 20px 30px;
+
+    text-align: center;
+}
+
+.product-category {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: var(--gold);
+
+    font-size: 0.68rem;
+    font-weight: 500;
+
+    letter-spacing: 0.2em;
+}
+
+.product-info h3 {
+    margin-bottom: 16px;
+
+    font-family: var(--font-display);
+
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+
+.product-line {
+    display: block;
+
+    width: 38px;
+    height: 1px;
+
+    margin: 0 auto 18px;
+
+    background: var(--gold);
+}
+
+.product-price {
+    font-size: 1.05rem;
+    font-weight: 500;
+
+    letter-spacing: 0.04em;
+}
+
+
+/* Collection Button */
+
+.featured-action {
+    margin-top: 55px;
+
+    text-align: center;
+}
+
+.collection-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 28px;
+
+    min-width: 310px;
+    min-height: 58px;
+
+    padding: 0 28px;
+
+    border: 1px solid var(--gold);
+
+    color: var(--black);
+
+    font-size: 0.72rem;
+    font-weight: 500;
+
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+
+    transition:
+        background var(--transition),
+        color var(--transition),
+        transform var(--transition);
+}
+
+.collection-btn span {
+    font-size: 1.2rem;
+
+    transition:
+        transform var(--transition);
+}
+
+.collection-btn:hover {
+    background: var(--gold);
+    color: var(--black);
+
+    transform: translateY(-3px);
+}
+
+.collection-btn:hover span {
+    transform: translateX(6px);
+}
+
+
+/* =========================================
+   OTHER SECTIONS — TEMPORARY
+========================================= */
+
 .philosophy,
 .arrivals,
 .craftsmanship,
@@ -363,6 +580,14 @@ will-change: opacity;
 /* =========================================
    MOBILE
 ========================================= */
+
+@media (max-width: 1100px) {
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 
 @media (max-width: 900px) {
 
@@ -421,12 +646,54 @@ will-change: opacity;
 
         font-size: 0.68rem;
     }
+
+    .featured {
+        padding: 85px 5% 90px;
+    }
 }
 
 
 /* =========================================
    SMALL MOBILE
 ========================================= */
+
+@media (max-width: 600px) {
+
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .featured-header {
+        margin-bottom: 40px;
+    }
+
+    .featured-header h2 {
+        font-size: clamp(2.8rem, 12vw, 4rem);
+    }
+
+    .section-description {
+        font-size: 0.82rem;
+    }
+
+    .product-info {
+        padding: 22px 18px 26px;
+    }
+
+    .product-info h3 {
+        font-size: 1.55rem;
+    }
+
+    .featured-action {
+        margin-top: 40px;
+    }
+
+    .collection-btn {
+        width: 100%;
+        min-width: 0;
+    }
+}
+
 
 @media (max-width: 480px) {
 
@@ -438,4 +705,4 @@ will-change: opacity;
         font-size: 0.8rem;
     }
 
-  }
+}
